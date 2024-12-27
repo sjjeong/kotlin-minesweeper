@@ -8,12 +8,13 @@ data class Minesweeper(
             "지뢰의 개수는 높이와 너비의 곱 보다 작거나 같아야 합니다."
         }
 
-        while (minePositionList.size < mineCount) {
-            val position = Position((0 until size.height).random(), (0 until size.width).random())
-            if (minePositionList.contains(position)) {
-                continue
+        val diff = mineCount - minePositionList.size
+        if (diff > 0) {
+            val heightRange = (0 until size.height).shuffled().take(diff)
+            val widthRange = (0 until size.width).shuffled().take(diff)
+            for (i in 0 until diff) {
+                minePositionList.add(Position(x = heightRange[i], y = widthRange[i]))
             }
-            minePositionList.add(position)
         }
     }
 
