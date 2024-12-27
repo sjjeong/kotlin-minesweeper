@@ -10,10 +10,10 @@ data class Minesweeper(
 
         val diff = mineCount - minePositionList.size
         if (diff > 0) {
-            val heightRange = (0 until size.height).shuffled().take(diff)
             val widthRange = (0 until size.width).shuffled().take(diff)
+            val heightRange = (0 until size.height).shuffled().take(diff)
             for (i in 0 until diff) {
-                minePositionList.add(Position(x = heightRange[i], y = widthRange[i]))
+                minePositionList.add(Position(x = widthRange[i], y = heightRange[i]))
             }
         }
     }
@@ -22,7 +22,7 @@ data class Minesweeper(
         val stringBuilder = StringBuilder()
         for (i in 0 until size.height) {
             for (j in 0 until size.width) {
-                val position = Position(i, j)
+                val position = Position(j, i)
                 if (minePositionList.contains(position)) {
                     stringBuilder.append("*")
                 } else {
