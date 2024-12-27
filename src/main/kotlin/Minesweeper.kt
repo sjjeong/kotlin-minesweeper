@@ -18,23 +18,16 @@ data class Minesweeper(
         }
     }
 
-    override fun toString(): String {
-        val stringBuilder = StringBuilder()
-        for (i in 0 until size.height) {
-            for (j in 0 until size.width) {
-                val position = Position(j, i)
-                if (minePositionList.contains(position)) {
-                    stringBuilder.append("*")
-                } else {
-                    stringBuilder.append("C")
-                }
-                if (j == size.width - 1) {
-                    stringBuilder.append("\n")
-                } else {
-                    stringBuilder.append(" ")
-                }
-            }
+    fun getMineType(position: Position): MineType {
+        return if (position in minePositionList) {
+            MineType.MINE
+        } else {
+            MineType.EMPTY
         }
-        return stringBuilder.toString()
+    }
+
+    enum class MineType(val displayText: String) {
+        EMPTY("C"),
+        MINE("*"),
     }
 }
