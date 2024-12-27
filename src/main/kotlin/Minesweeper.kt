@@ -6,14 +6,6 @@ data class Minesweeper(
     private val minePositionList = mutableListOf<Position>()
 
     init {
-        require(size.height in 1..100) {
-            "지뢰판의 높이는 1보다 크거나 같고 100보다 작거나 같아야 합니다."
-        }
-
-        require(size.width in 1..100) {
-            "지뢰판의 너비는 1보다 크거나 같고 100보다 작거나 같아야 합니다."
-        }
-
         require(mineCount in 1 until size.height * size.width) {
             "지뢰의 개수는 높이와 너비의 곱 보다 작거나 같아야 합니다."
         }
