@@ -6,13 +6,8 @@ class MinesweeperApplication(
     private val outputView: OutputView,
 ) {
     fun run() {
-        outputView.showInputHeight()
         val height = inputView.inputHeight()
-
-        outputView.showInputWidth()
         val width = inputView.inputWidth()
-
-        outputView.showInputMineCount()
         val mineCount = inputView.inputMineCount()
 
         val size = Size(height, width)
