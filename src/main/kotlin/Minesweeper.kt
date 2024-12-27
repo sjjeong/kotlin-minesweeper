@@ -1,10 +1,8 @@
 data class Minesweeper(
     val size: Size,
     val mineCount: Int,
+    private val minePositionList: MutableList<Position> = mutableListOf(),
 ) {
-
-    private val minePositionList = mutableListOf<Position>()
-
     init {
         require(mineCount in 1 until size.height * size.width) {
             "지뢰의 개수는 높이와 너비의 곱 보다 작거나 같아야 합니다."
